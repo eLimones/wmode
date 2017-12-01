@@ -1,8 +1,10 @@
 #!/bin/bash
 
+set -e
+
 if [ -z $1 ] ; then
-git config --get core.autocrlf | grep "input" -q && echo "linux"
-git config --get core.autocrlf | grep "true" -q && echo "windows"
+git config --get core.autocrlf | grep "input" -q && echo "linux" || true
+git config --get core.autocrlf | grep "true" -q && echo "windows" || true
 elif [ $1 == "on" ] ; then
     git config --global core.autocrlf true
     echo "now on windows mode"
